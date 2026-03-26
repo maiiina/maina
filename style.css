@@ -13,8 +13,6 @@
   --correct: #0a9e6e;
   --wrong: #e85d00;
 
-  --btn-hover: #ff90e8;
-
   /* project colors */
   --p1: #e85d00;
   --p2: #7c3aed;
@@ -211,7 +209,7 @@ body::-webkit-scrollbar {
 /* submit button */
 .quiz-submit {
   --bg: var(--black);
-  --hover-bg: var(--btn-hover);
+  --hover-bg: var(--swap);
   --hover-text: var(--black);
   font-family: monospace;
   font-size: 0.78rem;
