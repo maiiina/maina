@@ -15,11 +15,11 @@
         <span class="bs-label" id="bs-status">sorting...</span>
         <div class="bs-legend">
           <span class="bs-label"
-            ><span class="bs-dot" style="background: #0057ff"></span
+            ><span class="bs-dot" style="background: var(--accent)"></span
             >comparing</span
           >
           <span class="bs-label"
-            ><span class="bs-dot" style="background: #e85d00"></span
+            ><span class="bs-dot" style="background: var(--swap)"></span
             >swapping</span
           >
         </div>
@@ -34,6 +34,29 @@
         <p>Hello, I'm a software developer and a computer science student.</p>
       </fieldset>
     </header>
+
+    <!-- quiz -->
+    <div class="quiz" id="quiz">
+      <fieldset>
+        <div class="quiz-input-row">
+          <div class="input-container">
+            <input
+              type="text"
+              class="input-field"
+              id="quiz-input"
+              autocomplete="off"
+              placeholder=" "
+            />
+            <label class="input-label" for="quiz-input"
+              >guess the algorithm</label
+            >
+            <span class="input-highlight"></span>
+          </div>
+          <button class="quiz-submit" onclick="guess()">submit</button>
+        </div>
+        <p class="quiz-feedback" id="quiz-feedback"></p>
+      </fieldset>
+    </div>
 
     <!-- projects -->
     <section id="projects">

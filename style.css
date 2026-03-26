@@ -1,12 +1,27 @@
 :root {
-  --main1: #111;
-  --main2: #fff;
+  /* core */
+  --black: #111;
+  --white: #fff;
   --border: #ebeaea;
   --text: #444;
+  --muted: #aaa;
+  --subtle: #ccc;
+
+  /* accent */
   --accent: #0057ff;
+  --swap: #e85d00;
+  --correct: #0a9e6e;
+  --wrong: #e85d00;
+
+  --btn-hover: #ff90e8;
+
+  /* project colors */
   --p1: #e85d00;
   --p2: #7c3aed;
   --p3: #0a9e6e;
+
+  --instagram: #cc39a4;
+  --twitter: #03a9f4;
 }
 
 html {
@@ -22,8 +37,8 @@ body {
   max-width: 620px;
   margin: 60px auto;
   padding: 0 24px;
-  color: var(--main1);
-  background: var(--main2);
+  color: var(--black);
+  background: var(--white);
   overflow: auto;
   scrollbar-width: none;
 }
@@ -32,7 +47,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* bubble sort */
+/* bubble sort header */
 .sort-header {
   margin-bottom: 40px;
 }
@@ -50,21 +65,54 @@ body::-webkit-scrollbar {
   transition:
     height 0.18s ease,
     background 0.18s ease;
-  background: #111;
+  background: var(--black);
   opacity: 0.15;
 }
 
 .bs-bar.comparing {
-  background: #0057ff;
+  background: var(--accent);
   opacity: 1;
 }
 .bs-bar.swapping {
-  background: #e85d00;
+  background: var(--swap);
   opacity: 1;
 }
 .bs-bar.sorted {
-  background: #111;
+  background: var(--black);
   opacity: 0.8;
+}
+.bs-bar.dancing {
+  background: var(--accent);
+  opacity: 1;
+  transform: scaleY(1.3);
+  transition:
+    transform 0.1s ease,
+    background 0.1s ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bs-bars.shake {
+  animation: shake 0.5s ease;
 }
 
 .bs-meta {
@@ -75,7 +123,7 @@ body::-webkit-scrollbar {
 
 .bs-label {
   font-size: 11px;
-  color: #aaa;
+  color: var(--muted);
   letter-spacing: 0.06em;
 }
 
@@ -93,6 +141,120 @@ body::-webkit-scrollbar {
   vertical-align: middle;
 }
 
+/* quiz */
+.quiz {
+  margin-bottom: 40px;
+}
+
+.quiz-question {
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* input field */
+.quiz-input-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.input-container {
+  position: relative;
+  margin: 0;
+}
+
+.input-field {
+  display: block;
+  width: 220px;
+  padding: 10px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  border: none;
+  border-bottom: 2px solid var(--subtle);
+  outline: none;
+  background-color: transparent;
+}
+
+.input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.85rem;
+  color: var(--subtle);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  font-family: monospace;
+}
+
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--black);
+  transition: all 0.3s ease;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: -16px;
+  font-size: 0.7rem;
+  color: var(--black);
+}
+
+.input-field:focus + .input-label + .input-highlight {
+  width: 100%;
+}
+
+/* submit button */
+.quiz-submit {
+  --bg: var(--black);
+  --hover-bg: var(--btn-hover);
+  --hover-text: var(--black);
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: var(--white);
+  cursor: pointer;
+  border: 1px solid var(--black);
+  border-radius: 4px;
+  padding: 0.5em 1.2em;
+  background: var(--black);
+  transition: 0.2s;
+}
+
+.quiz-submit:hover:not(:disabled) {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.quiz-submit:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+.quiz-submit:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.quiz-feedback {
+  font-size: 0.78rem;
+  margin-top: 10px;
+  min-height: 1.2em;
+  transition: color 0.2s;
+}
+
+.quiz-feedback.correct {
+  color: var(--correct);
+}
+.quiz-feedback.wrong {
+  color: var(--wrong);
+}
+
 /* about */
 h1 {
   font-size: 1.5rem;
@@ -108,7 +270,7 @@ fieldset {
 }
 
 fieldset:hover {
-  border-color: var(--main1);
+  border-color: var(--black);
 }
 
 legend {
@@ -124,7 +286,7 @@ p {
   color: var(--text);
 }
 
-/* project */
+/* projects */
 .project {
   display: inline-block;
   padding: 2px 0;
@@ -135,7 +297,6 @@ p {
   transition: all 0.15s;
 }
 
-/* project color */
 .p1 {
   border-left: 2px solid var(--p1);
 }
@@ -161,8 +322,8 @@ p {
 }
 
 .project:hover {
-  color: var(--main1);
-  border-bottom-color: var(--main1);
+  color: var(--black);
+  border-bottom-color: var(--black);
 }
 
 .project-desc {
@@ -185,53 +346,33 @@ p {
   gap: 0.5em;
 }
 
-.instagram {
+.instagram,
+.twitter,
+.github {
   padding: 0.8em;
   outline: none;
   border: none;
-  background: #fff;
+  background: var(--white);
   cursor: pointer;
   transition: scale 0.2s ease-in-out;
 }
 
 #instagram {
-  fill: #cc39a4;
+  fill: var(--instagram);
 }
-
-.twitter {
-  padding: 0.8em;
-  outline: none;
-  border: none;
-  background: #fff;
-  cursor: pointer;
-  transition: scale 0.2s ease-in-out;
-}
-
 #twitter {
-  fill: #03a9f4;
-}
-
-.github {
-  padding: 0.8em;
-  outline: none;
-  border: none;
-  background: #fff;
-  cursor: pointer;
-  transition: scale 0.2s ease-in-out;
+  fill: var(--twitter);
 }
 
 .instagram:hover {
   scale: 1.4;
 }
-
 .twitter:hover {
   scale: 1.4;
 }
-
 .github:hover {
   scale: 1.4;
 }
-
 .github:hover #github {
-  fill: #111;
+  fill: var(--black);
 }
