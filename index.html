@@ -7,24 +7,6 @@
     <link rel="icon" type="svg" href="logo.svg" />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <!-- bubble sort -->
-    <div class="sort-header">
-      <div class="bs-bars" id="bars"></div>
-      <div class="bs-meta">
-        <span class="bs-label" id="bs-status">sorting...</span>
-        <div class="bs-legend">
-          <span class="bs-label"
-            ><span class="bs-dot" style="background: var(--accent)"></span
-            >comparing</span
-          >
-          <span class="bs-label"
-            ><span class="bs-dot" style="background: var(--swap)"></span
-            >swapping</span
-          >
-        </div>
-      </div>
-    </div>
 
     <!-- about -->
     <header id="home">
@@ -35,41 +17,18 @@
       </fieldset>
     </header>
 
-    <!-- quiz -->
-    <div class="quiz" id="quiz">
-      <fieldset>
-        <div class="quiz-input-row">
-          <div class="input-container">
-            <input
-              type="text"
-              class="input-field"
-              id="quiz-input"
-              autocomplete="off"
-              placeholder=" "
-            />
-            <label class="input-label" for="quiz-input"
-              >guess the algorithm</label
-            >
-            <span class="input-highlight"></span>
-          </div>
-          <button class="quiz-submit" onclick="guess()">submit</button>
-        </div>
-        <p class="quiz-feedback" id="quiz-feedback"></p>
-      </fieldset>
-    </div>
-
     <!-- projects -->
     <section id="projects">
       <fieldset>
         <legend>projects</legend>
 
         <div class="project-item p1">
-          <a href="https://github.com/..." class="project" target="_blank"
-            >Project one</a
+          <a href="https://github.com/kuriiia/CoBy" class="project" target="_blank"
+            >CoBy</a
           >
-          <p class="project-desc">Short description of what it does.</p>
+          <p class="project-desc">A compiler that lets you right code in kikuyu.</p>
         </div>
-
+<!-- 
         <div class="project-item p2">
           <a href="https://github.com/..." class="project" target="_blank"
             >Another project</a
@@ -82,7 +41,7 @@
             >Yet another project</a
           >
           <p class="project-desc">Short description of what it does.</p>
-        </div>
+        </div> -->
       </fieldset>
     </section>
 
@@ -127,7 +86,7 @@
           </svg>
         </button>
         <button
-          onclick="window.open('https://x.com/kuriiia', '_blank')"
+          onclick="window.open('https://x.com/kuria', '_blank')"
           class="twitter"
         >
           <svg
@@ -160,7 +119,5 @@
         </button>
       </fieldset>
     </section>
-
-    <script src="script.js"></script>
   </body>
 </html>
