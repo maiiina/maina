@@ -1,5 +1,4 @@
 :root {
-  /* core */
   --black: #111;
   --white: #fff;
   --border: #ebeaea;
@@ -7,13 +6,41 @@
   --muted: #aaa;
   --subtle: #ccc;
 
-  /* project colors */
   --p1: #e85d00;
   --p2: #7c3aed;
   --p3: #0a9e6e;
 
   --instagram: #cc39a4;
   --twitter: #03a9f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #f0f0f0;
+    --white: #111;
+    --border: #2a2a2a;
+    --text: #bbb;
+    --muted: #666;
+    --subtle: #444;
+  }
+}
+
+[data-theme="dark"] {
+  --black: #f0f0f0;
+  --white: #111;
+  --border: #2a2a2a;
+  --text: #bbb;
+  --muted: #666;
+  --subtle: #444;
+}
+
+[data-theme="light"] {
+  --black: #111;
+  --white: #fff;
+  --border: #ebeaea;
+  --text: #444;
+  --muted: #aaa;
+  --subtle: #ccc;
 }
 
 html {
@@ -33,6 +60,7 @@ body {
   background: var(--white);
   overflow: auto;
   scrollbar-width: none;
+  transition: background 0.2s, color 0.2s;
 }
 
 body::-webkit-scrollbar {
@@ -40,17 +68,47 @@ body::-webkit-scrollbar {
 }
 
 /* about */
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
 h1 {
   font-size: 1.5rem;
-  margin-bottom: 32px;
+  margin: 0;
   letter-spacing: -0.01em;
 }
+
+#theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  transition: scale 0.2s ease-in-out;
+}
+
+#theme-toggle:hover {
+  scale: 1.2;
+}
+
+/* show sun in dark mode, moon in light mode */
+#icon-sun { display: none; }
+#icon-moon { display: block; }
+
+[data-theme="dark"] #icon-sun { display: block; }
+[data-theme="dark"] #icon-moon { display: none; }
 
 fieldset {
   border: 1px solid var(--border);
   margin-bottom: 20px;
   padding: 18px 20px;
   border-radius: 6px;
+  transition: border-color 0.2s;
 }
 
 fieldset:hover {
@@ -81,29 +139,14 @@ p {
   transition: all 0.15s;
 }
 
-.p1 {
-  border-left: 2px solid var(--p1);
-}
-.p1 .project {
-  color: var(--p1);
-  border-bottom-color: var(--p1);
-}
+.p1 { border-left: 2px solid var(--p1); }
+.p1 .project { color: var(--p1); border-bottom-color: var(--p1); }
 
-.p2 {
-  border-left: 2px solid var(--p2);
-}
-.p2 .project {
-  color: var(--p2);
-  border-bottom-color: var(--p2);
-}
+.p2 { border-left: 2px solid var(--p2); }
+.p2 .project { color: var(--p2); border-bottom-color: var(--p2); }
 
-.p3 {
-  border-left: 2px solid var(--p3);
-}
-.p3 .project {
-  color: var(--p3);
-  border-bottom-color: var(--p3);
-}
+.p3 { border-left: 2px solid var(--p3); }
+.p3 .project { color: var(--p3); border-bottom-color: var(--p3); }
 
 .project:hover {
   color: var(--black);
@@ -136,27 +179,15 @@ p {
   padding: 0.8em;
   outline: none;
   border: none;
-  background: var(--white);
+  background: transparent;
   cursor: pointer;
   transition: scale 0.2s ease-in-out;
 }
 
-#instagram {
-  fill: var(--instagram);
-}
-#twitter {
-  fill: var(--twitter);
-}
+#instagram { fill: var(--instagram); }
+#twitter { fill: var(--twitter); }
+#github { fill: var(--black); }
 
-.instagram:hover {
-  scale: 1.4;
-}
-.twitter:hover {
-  scale: 1.4;
-}
-.github:hover {
-  scale: 1.4;
-}
-.github:hover #github {
-  fill: var(--black);
-}
+.instagram:hover { scale: 1.4; }
+.twitter:hover { scale: 1.4; }
+.github:hover { scale: 1.4; }
