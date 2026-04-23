@@ -14,17 +14,6 @@
   --twitter: #03a9f4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --black: #f0f0f0;
-    --white: #111;
-    --border: #2a2a2a;
-    --text: #bbb;
-    --muted: #666;
-    --subtle: #444;
-  }
-}
-
 [data-theme="dark"] {
   --black: #f0f0f0;
   --white: #111;
@@ -60,14 +49,12 @@ body {
   background: var(--white);
   overflow: auto;
   scrollbar-width: none;
-  transition: background 0.2s, color 0.2s;
 }
 
 body::-webkit-scrollbar {
   display: none;
 }
 
-/* about */
 .top-row {
   display: flex;
   align-items: center;
@@ -96,12 +83,17 @@ h1 {
   scale: 1.2;
 }
 
-/* show sun in dark mode, moon in light mode */
 #icon-sun { display: none; }
 #icon-moon { display: block; }
 
 [data-theme="dark"] #icon-sun { display: block; }
 [data-theme="dark"] #icon-moon { display: none; }
+
+/* fieldset border draw */
+@keyframes border-draw {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
 
 fieldset {
   border: 1px solid var(--border);
@@ -109,7 +101,12 @@ fieldset {
   padding: 18px 20px;
   border-radius: 6px;
   transition: border-color 0.2s;
+  animation: border-draw 0.6s ease-out both;
 }
+
+fieldset:nth-of-type(1) { animation-delay: 0.0s; }
+fieldset:nth-of-type(2) { animation-delay: 0.15s; }
+fieldset:nth-of-type(3) { animation-delay: 0.3s; }
 
 fieldset:hover {
   border-color: var(--black);
@@ -128,14 +125,12 @@ p {
   color: var(--text);
 }
 
-/* projects */
 .project {
   display: inline-block;
   padding: 2px 0;
   font-size: 0.85rem;
-  color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid var(--accent);
+  border-bottom: 1px solid;
   transition: all 0.15s;
 }
 
@@ -167,7 +162,6 @@ p {
   margin-bottom: 0;
 }
 
-/* contact */
 #contact {
   flex-direction: row;
   gap: 0.5em;

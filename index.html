@@ -6,6 +6,22 @@
     <title>Maina Kuria</title>
     <link rel="icon" type="svg" href="logo.svg" />
     <link rel="stylesheet" href="style.css" />
+     <script>
+    const root = document.documentElement;
+
+    // always explicitly set data-theme on load so the attribute wins over the media query
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = saved ? saved : (prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', initial);
+
+    function toggleTheme() {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+  </script>
   </head>
   <body>
 
@@ -85,20 +101,4 @@
     </section>
 
   </body>
-  <script>
-    const root = document.documentElement;
-
-    // Apply saved or OS preference on load
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (saved === 'dark' || (!saved && prefersDark)) {
-      root.setAttribute('data-theme', 'dark');
-    }
-
-    function toggleTheme() {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    }
-  </script>
 </html>
