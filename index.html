@@ -9,7 +9,6 @@
      <script>
     const root = document.documentElement;
 
-    // always explicitly set data-theme on load so the attribute wins over the media query
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initial = saved ? saved : (prefersDark ? 'dark' : 'light');
